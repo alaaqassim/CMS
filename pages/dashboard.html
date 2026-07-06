@@ -135,13 +135,13 @@
 <!-- TopNavBar -->
 <nav class="fixed top-0 right-0 left-0 w-full z-50 flex flex-row-reverse justify-between items-center px-lg h-16 bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant dark:border-outline">
 <div class="flex items-center gap-md">
-<span class="font-headline-md text-headline-md font-bold text-primary">نظام إدارة المسابقات</span>
+<a class="font-headline-md text-headline-md font-bold text-primary" href="home.html">نظام إدارة المسابقات</a>
 </div>
 <div class="hidden md:flex items-center gap-xl ml-auto mr-xl">
-<a class="text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1 font-body-md text-body-md" href="#">الرئيسية</a>
-<a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-low transition-colors px-sm py-xs rounded font-body-md text-body-md" href="#">المسابقات</a>
-<a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-low transition-colors px-sm py-xs rounded font-body-md text-body-md" href="#">النتائج</a>
-<a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-low transition-colors px-sm py-xs rounded font-body-md text-body-md" href="#">عن المنصة</a>
+<a class="text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1 font-body-md text-body-md" href="home.html">الرئيسية</a>
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-low transition-colors px-sm py-xs rounded font-body-md text-body-md" href="competition.html">المسابقات</a>
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-low transition-colors px-sm py-xs rounded font-body-md text-body-md" href="results.html">النتائج</a>
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-low transition-colors px-sm py-xs rounded font-body-md text-body-md" href="home.html#about">عن المنصة</a>
 </div>
 <div class="flex items-center gap-md">
 <button class="material-symbols-outlined p-sm rounded-full text-on-surface-variant hover:bg-surface-container-low transition-colors" data-icon="language">language</button>
@@ -163,33 +163,33 @@
 <!-- Sidebar Navigation (Desktop) -->
 <aside class="hidden lg:flex fixed right-0 top-16 h-[calc(100vh-64px)] w-sidebar-width bg-surface-container-lowest border-l border-outline-variant flex-col p-md z-40 rtl">
 <div class="flex flex-col gap-xs flex-grow">
-<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-lg transition-all scale-95 duration-100" href="#">
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-lg transition-all scale-95 duration-100" href="dashboard.html">
 <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
 <span class="font-label-md text-label-md">لوحة التحكم</span>
 </a>
-<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="competition.html">
 <span class="material-symbols-outlined" data-icon="emoji_events">emoji_events</span>
 <span class="font-label-md text-label-md">المسابقات المتاحة</span>
 </a>
-<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="results.html">
 <span class="material-symbols-outlined" data-icon="history">history</span>
 <span class="font-label-md text-label-md">تاريخ المشاركات</span>
 </a>
-<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="register.html">
 <span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
 <span class="font-label-md text-label-md">الملف الشخصي</span>
 </a>
-<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="home.html#about">
 <span class="material-symbols-outlined" data-icon="settings">settings</span>
 <span class="font-label-md text-label-md">الإعدادات</span>
 </a>
 </div>
 <div class="pt-md border-t border-outline-variant flex flex-col gap-xs">
-<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg" href="#">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg" href="home.html#about">
 <span class="material-symbols-outlined" data-icon="help">help</span>
 <span class="font-label-md text-label-md">المساعدة</span>
 </a>
-<a class="flex items-center gap-md px-md py-sm text-error hover:bg-error-container rounded-lg" href="#">
+<a class="flex items-center gap-md px-md py-sm text-error hover:bg-error-container rounded-lg" href="home.html">
 <span class="material-symbols-outlined" data-icon="logout">logout</span>
 <span class="font-label-md text-label-md">خروج</span>
 </a>
