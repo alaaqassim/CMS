@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>نظام إدارة المسابقات | الرئيسية</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#bcc7de",
+                    "surface": "#f7f9fb",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#005137",
+                    "surface-container-highest": "#e0e3e5",
+                    "primary-container": "#131b2e",
+                    "on-tertiary-container": "#069669",
+                    "surface-tint": "#565e74",
+                    "outline": "#76777d",
+                    "surface-dim": "#d8dadc",
+                    "secondary-fixed": "#d8e3fb",
+                    "tertiary-fixed": "#85f8c4",
+                    "tertiary-fixed-dim": "#68dba9",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#002114",
+                    "background": "#f7f9fb",
+                    "on-surface": "#191c1e",
+                    "outline-variant": "#c6c6cd",
+                    "surface-variant": "#e0e3e5",
+                    "on-surface-variant": "#45464d",
+                    "primary": "#000000",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#586377",
+                    "primary-fixed-dim": "#bec6e0",
+                    "surface-bright": "#f7f9fb",
+                    "surface-container-high": "#e6e8ea",
+                    "inverse-surface": "#2d3133",
+                    "on-primary-container": "#7c839b",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary": "#000000",
+                    "tertiary-container": "#002114",
+                    "on-background": "#191c1e",
+                    "secondary": "#545f73",
+                    "surface-container-low": "#f2f4f6",
+                    "on-primary-fixed": "#131b2e",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#dae2fd",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#d5e0f8",
+                    "inverse-primary": "#bec6e0",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#111c2d",
+                    "on-secondary-fixed-variant": "#3c475a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#eceef0",
+                    "slate": {
+                        "50": "#F8FAFC",
+                        "100": "#F1F5F9",
+                        "200": "#E2E8F0",
+                        "800": "#1E293B",
+                        "900": "#0F172A"
+                    },
+                    "emerald": {
+                        "100": "#D1FAE5",
+                        "600": "#059669",
+                        "800": "#065F46"
+                    }
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "container-max": "1440px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "base": "8px",
+                    "sidebar-collapsed": "80px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "sidebar-width": "280px",
+                    "2xl": "48px"
+            },
+            "fontFamily": {
+                    "headline-md": ["\"IBM Plex Sans Arabic\""],
+                    "headline-lg": ["\"IBM Plex Sans Arabic\""],
+                    "label-sm": ["\"IBM Plex Sans Arabic\""],
+                    "display-lg": ["\"IBM Plex Sans Arabic\""],
+                    "body-md": ["\"Inter\", \"IBM Plex Sans Arabic\""],
+                    "title-lg": ["\"IBM Plex Sans Arabic\""],
+                    "label-md": ["\"IBM Plex Sans Arabic\""]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', 'IBM Plex Sans Arabic', sans-serif; background-color: #F8FAFC; }
+        .glass-header { backdrop-filter: blur(8px); background-color: rgba(255, 255, 255, 0.8); }
+        .competition-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid #E2E8F0; }
+        .competition-card:hover { border-color: #000000; transform: translateY(-4px); }
+        .hero-pattern { background-image: radial-gradient(#0F172A 0.5px, transparent 0.5px); background-size: 24px 24px; }
+    </style>
+</head>
+<body class="bg-surface">
+<!-- TopNavBar (Shared Component Logic) -->
+<header class="fixed top-0 right-0 left-0 w-full z-50 flex flex-row-reverse justify-between items-center px-lg h-16 bg-surface-container-lowest border-b border-outline-variant glass-header">
+<div class="flex items-center gap-xl flex-row-reverse">
+<!-- Brand -->
+<div class="font-headline-md text-headline-md font-bold text-primary">نظام إدارة المسابقات</div>
+<!-- Desktop Nav Links -->
+<nav class="hidden md:flex flex-row-reverse gap-lg">
+<a class="text-primary border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">الرئيسية</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 rounded font-body-md text-body-md" href="#">المسابقات</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 rounded font-body-md text-body-md" href="#">النتائج</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 rounded font-body-md text-body-md" href="#">عن المنصة</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<!-- Search (On Left per JSON) -->
+<div class="hidden sm:flex items-center bg-surface-container px-md py-xs rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant text-md">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 text-right" placeholder="بحث عن مسابقة..." type="text"/>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined p-xs hover:bg-surface-container rounded-full cursor-pointer">language</span>
+<span class="material-symbols-outlined p-xs hover:bg-surface-container rounded-full cursor-pointer">notifications</span>
+<button class="hidden md:block px-lg py-xs bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:opacity-80 duration-150">تسجيل الدخول</button>
+<button class="hidden lg:block px-lg py-xs border border-outline text-primary rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors">إنشاء حساب</button>
+</div>
+</div>
+</header>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative h-[600px] flex items-center overflow-hidden bg-slate-900">
+<!-- Animated Shader / Background Layer -->
+<div class="absolute inset-0 opacity-40">
+<div class="absolute inset-0 hero-pattern"></div>
+<div class="absolute inset-0 bg-gradient-to-l from-slate-900 via-transparent to-slate-900"></div>
+</div>
+<div class="container mx-auto px-lg relative z-10 flex flex-col md:flex-row items-center gap-2xl">
+<div class="md:w-1/2 text-white">
+<div class="inline-flex items-center gap-xs bg-white/10 border border-white/20 px-md py-xs rounded-full mb-lg">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+<span class="font-label-md text-label-md">التسجيل متاح حالياً للمسابقات الوطنية</span>
+</div>
+<h1 class="font-display-lg text-display-lg mb-md leading-tight">بوابة الموهبة والابتكار <br/><span class="text-secondary-fixed">لمستقبل تقني واعد</span></h1>
+<p class="font-body-lg text-body-lg text-slate-300 max-w-xl mb-xl leading-relaxed">
+                        المنصة الرسمية الموحدة لإدارة وتنظيم المسابقات الوطنية تحت إشراف وزارة التعليم والجهات الحكومية الشريكة. اكتشف، شارك، وتميز.
+                    </p>
+<div class="flex gap-md">
+<button class="bg-white text-slate-900 px-2xl py-md rounded-xl font-headline-md text-headline-md flex items-center gap-sm hover:bg-slate-200 transition-all group">
+                            استكشف المسابقات
+                            <span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+</button>
+<button class="border border-white/30 text-white px-2xl py-md rounded-xl font-headline-md text-headline-md hover:bg-white/10 transition-all">
+                            عن المنصة
+                        </button>
+</div>
+</div>
+<div class="md:w-1/2 h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative">
+<img class="w-full h-full object-cover" data-alt="A grand, architectural shot of a futuristic government building at dusk, with sleek glass facades and warm internal lighting. The atmosphere is professional and authoritative, reflecting institutional trust. The lighting is low-key with high-contrast highlights, emphasizing the sharp modern lines of the corporate structure. The sky is a deep indigo, providing a serene and stable backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCChlY3_yQz4_XN24zJf9kq3rQd-nVM4SHO6bqrd9cpo8kmdLBcltcEO1gssnxVZnJckI5r2YrpcrnL62BvTjElpCO03G9yW-UT9IS4ZBWCeoKLRRSGQFkqobDPTVbxiU2UCPLgwMB54Zl9szbZ6TaWJPZ2FchTXE9s50HDoDj4H6SEpmrX4DwDchmyy6s70YngS31D3Nv-JJbK8FB1JfFwn7ee8DfScmyQPMw5EfaOriDIrOvSy5-t"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+</div>
+</div>
+</section>
+<!-- Stats Quick Look -->
+<section class="container mx-auto px-lg -mt-12 relative z-20">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex flex-col items-center text-center">
+<span class="font-display-lg text-display-lg text-primary">45+</span>
+<span class="font-label-md text-label-md text-on-surface-variant">مسابقة نشطة</span>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex flex-col items-center text-center">
+<span class="font-display-lg text-display-lg text-primary">120K</span>
+<span class="font-label-md text-label-md text-on-surface-variant">متسابق مسجل</span>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex flex-col items-center text-center">
+<span class="font-display-lg text-display-lg text-primary">15</span>
+<span class="font-label-md text-label-md text-on-surface-variant">شريك حكومي</span>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex flex-col items-center text-center">
+<span class="font-display-lg text-display-lg text-primary">2.4M</span>
+<span class="font-label-md text-label-md text-on-surface-variant">جوائز نقدية</span>
+</div>
+</div>
+</section>
+<!-- Available Competitions Section -->
+<section class="container mx-auto px-lg py-2xl">
+<div class="flex flex-col md:flex-row justify-between items-end mb-xl gap-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-xs">المسابقات المتاحة</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">انضم الآن إلى نخبة المبتكرين في المسابقات الوطنية القادمة</p>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-xs border border-outline-variant rounded-lg hover:bg-surface-container transition-colors"><span class="material-symbols-outlined">filter_list</span></button>
+<div class="bg-surface-container p-xs rounded-lg flex">
+<button class="px-md py-xs bg-surface-container-lowest shadow-sm rounded-md font-label-md text-label-md">الكل</button>
+<button class="px-md py-xs text-on-surface-variant font-label-md text-label-md">تقنية</button>
+<button class="px-md py-xs text-on-surface-variant font-label-md text-label-md">علوم</button>
+<button class="px-md py-xs text-on-surface-variant font-label-md text-label-md">أدب</button>
+</div>
+</div>
+</div>
+<!-- Bento-style Grid / Modern Card Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Competition Card 1 -->
+<div class="competition-card bg-surface-container-lowest rounded-xl overflow-hidden flex flex-col">
+<div class="relative h-48">
+<img class="w-full h-full object-cover" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<div class="absolute top-md right-md">
+<span class="bg-emerald-100 text-emerald-800 px-md py-xs rounded-full font-label-sm text-label-sm font-bold flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                                نشط
+                            </span>
+</div>
+</div>
+<div class="p-lg flex-grow">
+<div class="flex items-center gap-xs text-on-surface-variant mb-xs">
+<span class="material-symbols-outlined text-sm">account_balance</span>
+<span class="font-label-sm text-label-sm">وزارة الاتصالات وتقنية المعلومات</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-sm leading-snug">المسابقة الوطنية للابتكار التقني 2024</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg line-clamp-2">
+                            مسابقة وطنية تهدف إلى تشجيع الابتكار في مجالات الذكاء الاصطناعي والأمن السيبراني وتطوير الحلول الذكية.
+                        </p>
+<div class="space-y-sm mb-xl">
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">calendar_today</span> فترة التسجيل</span>
+<span class="font-medium">15 مايو - 15 يونيو 2024</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">event</span> موعد الاختبار</span>
+<span class="font-medium">1 يوليو 2024</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">groups</span> عدد المتقدمين</span>
+<span class="font-medium">1,240 متسابق</span>
+</div>
+</div>
+<div class="flex gap-md mt-auto">
+<button class="flex-1 bg-primary text-on-primary py-sm rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">التسجيل الآن</button>
+<button class="flex-1 border border-outline-variant py-sm rounded-lg font-label-md text-label-md hover:bg-surface-container transition-colors">عرض التفاصيل</button>
+</div>
+</div>
+</div>
+<!-- Competition Card 2 (Reused placeholder as template) -->
+<div class="competition-card bg-surface-container-lowest rounded-xl overflow-hidden flex flex-col">
+<div class="relative h-48">
+<img class="w-full h-full object-cover" data-alt="A futuristic digital laboratory setting with floating holographic interfaces displaying chemical formulas and biological structures. The room is pristine, characterized by white surfaces and subtle cyan neon accents. High-tech scientific equipment is visible in the blurred background. The overall style is clean, clinical, and advanced, reflecting a high-stakes scientific competition environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKwG08t-1A4dVpD1vIt73QLvEyd7ADKu5-kDHTYI5CrhAWMGg1iqF_nHEI14Bk2eU3tRsEWYv_if_fBOfwjyjsN2U6ewWkEnm3UQJ6saFLD2WZpTjNc1ZdF1o702J0AhBt5MZVgg4vAGWwfGKwwf6UD6WcOd4LWWCBFyywSyZWuU2t6DRTiNnD99Az5pSODwBPRDw9eCEWSYkA06XTkkFKuLNSl7yoYg6X_zTNo_zBEmUuftOq5Jir"/>
+<div class="absolute top-md right-md">
+<span class="bg-emerald-100 text-emerald-800 px-md py-xs rounded-full font-label-sm text-label-sm font-bold flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                                نشط
+                            </span>
+</div>
+</div>
+<div class="p-lg flex-grow">
+<div class="flex items-center gap-xs text-on-surface-variant mb-xs">
+<span class="material-symbols-outlined text-sm">school</span>
+<span class="font-label-sm text-label-sm">مدينة الملك عبدالعزيز للعلوم والتقنية</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-sm leading-snug">الأولمبياد الوطني للعلوم والرياضيات</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg line-clamp-2">
+                            منافسة وطنية سنوية تجمع عباقرة الرياضيات والعلوم من كافة مناطق المملكة للتنافس على المراكز الأولى.
+                        </p>
+<div class="space-y-sm mb-xl">
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">calendar_today</span> فترة التسجيل</span>
+<span class="font-medium">1 يونيو - 30 يونيو 2024</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">event</span> موعد الاختبار</span>
+<span class="font-medium">15 يوليو 2024</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">groups</span> عدد المتقدمين</span>
+<span class="font-medium">3,450 متسابق</span>
+</div>
+</div>
+<div class="flex gap-md mt-auto">
+<button class="flex-1 bg-primary text-on-primary py-sm rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">التسجيل الآن</button>
+<button class="flex-1 border border-outline-variant py-sm rounded-lg font-label-md text-label-md hover:bg-surface-container transition-colors">عرض التفاصيل</button>
+</div>
+</div>
+</div>
+<!-- Competition Card 3 -->
+<div class="competition-card bg-surface-container-lowest rounded-xl overflow-hidden flex flex-col">
+<div class="relative h-48">
+<img class="w-full h-full object-cover" data-alt="An expansive digital canvas showcasing a blend of traditional Arabic calligraphy and modern digital abstract art. Vibrant colors including emerald green, deep gold, and charcoal black flow together. The lighting is dramatic, highlighting the texture of the digital strokes. This representational art piece signifies the fusion of heritage and modern creative technology in a professional competition setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoRtt96kq4JSREubH46iFEtKhx3ybfHeLJj4oAsAsbVQq_rgrrDSx4YGTnyY1rqzBdbaExKnmHkJsTj1RaBI3z_R4d-jrgWbvSnvdhyen0eC-WUGfYkocpwCXrMt_KcV4F_bkdAW5t_8t-AbMAJ9XtBGQazKyMm4c_T9Da39cWAdUm2efwTyVgHEewu5J-51_euS-g9Vxyl1g3AG_1oKJrpKa3SJDNCO546c5eNkRjiauVy6r7vVDr"/>
+<div class="absolute top-md right-md">
+<span class="bg-surface-container-highest text-on-surface-variant px-md py-xs rounded-full font-label-sm text-label-sm font-bold flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                                قريباً
+                            </span>
+</div>
+</div>
+<div class="p-lg flex-grow">
+<div class="flex items-center gap-xs text-on-surface-variant mb-xs">
+<span class="material-symbols-outlined text-sm">palette</span>
+<span class="font-label-sm text-label-sm">وزارة الثقافة</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-sm leading-snug">جائزة المملكة للفنون الرقمية</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg line-clamp-2">
+                            منصة للمبدعين في مجال الفن الرقمي والإنتاج المرئي لاستعراض مهاراتهم والفوز بجوائز قيمة.
+                        </p>
+<div class="space-y-sm mb-xl">
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">calendar_today</span> فترة التسجيل</span>
+<span class="font-medium">10 يوليو - 10 أغسطس 2024</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">event</span> موعد التحكيم</span>
+<span class="font-medium">25 أغسطس 2024</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">groups</span> المستهدف</span>
+<span class="font-medium">جميع المصممين</span>
+</div>
+</div>
+<div class="flex gap-md mt-auto">
+<button class="flex-1 bg-slate-200 text-slate-500 py-sm rounded-lg font-label-md text-label-md cursor-not-allowed">التسجيل مغلق</button>
+<button class="flex-1 border border-outline-variant py-sm rounded-lg font-label-md text-label-md hover:bg-surface-container transition-colors">عرض التفاصيل</button>
+</div>
+</div>
+</div>
+</div>
+<!-- View All Button -->
+<div class="mt-2xl text-center">
+<button class="border-2 border-primary px-2xl py-md rounded-xl font-headline-md text-headline-md hover:bg-primary hover:text-on-primary transition-all duration-300">
+                    استعراض كافة المسابقات
+                </button>
+</div>
+</section>
+<!-- Newsletter / CTA -->
+<section class="bg-primary-container text-on-primary py-2xl">
+<div class="container mx-auto px-lg">
+<div class="flex flex-col md:flex-row items-center justify-between gap-xl">
+<div class="md:w-1/2">
+<h2 class="font-headline-lg text-headline-lg mb-sm">ابقَ على اطلاع دائم</h2>
+<p class="font-body-md text-on-primary-container">اشترك في النشرة الإخبارية لتصلك أحدث المسابقات والنتائج مباشرة إلى بريدك الإلكتروني.</p>
+</div>
+<div class="md:w-1/2 w-full max-w-lg">
+<form class="flex gap-sm">
+<input class="flex-grow bg-surface-container-low border-none rounded-xl px-lg py-md text-primary focus:ring-2 focus:ring-secondary-fixed" placeholder="البريد الإلكتروني" type="email"/>
+<button class="bg-white text-slate-900 px-xl py-md rounded-xl font-label-md text-label-md hover:bg-slate-100 transition-colors">اشترك</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant pt-2xl pb-lg">
+<div class="container mx-auto px-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2xl mb-2xl">
+<div>
+<div class="font-headline-md text-headline-md font-bold text-primary mb-lg">نظام إدارة المسابقات</div>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                        بوابة حكومية موحدة تهدف إلى تيسير إجراءات المسابقات الوطنية وتطوير مهارات الشباب في مختلف المجالات التقنية والعلمية.
+                    </p>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-primary mb-lg">روابط سريعة</h4>
+<ul class="space-y-sm text-on-surface-variant font-body-md">
+<li><a class="hover:text-primary transition-colors" href="#">الرئيسية</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">المسابقات النشطة</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">النتائج والتقارير</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">الأسئلة الشائعة</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-primary mb-lg">الدعم والاتصال</h4>
+<ul class="space-y-sm text-on-surface-variant font-body-md">
+<li class="flex items-center gap-sm"><span class="material-symbols-outlined text-[20px]">mail</span> support@cms.gov.sa</li>
+<li class="flex items-center gap-sm"><span class="material-symbols-outlined text-[20px]">call</span> 800-123-4567</li>
+<li class="flex items-center gap-sm"><span class="material-symbols-outlined text-[20px]">location_on</span> الرياض، المملكة العربية السعودية</li>
+</ul>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-primary mb-lg">تابعنا</h4>
+<div class="flex gap-md">
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined">chat</span>
+</a>
+</div>
+<div class="mt-lg">
+<img class="h-12 opacity-30" data-alt="A small, elegant icon or logo representing a stylized Saudi palm tree and crossed swords, rendered in a minimalist line-art style using a deep navy blue color. This signifies governmental heritage and pride, suitable for a footer ornament." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbg2qq4PzeixzNfzqjyK9vTDNSSJQVxnhLmJ0LGe7AtW0FBWtGZKPfmnOV6V5PlgjsPkOFB0nDE-4zUYPwAlvTl-qXdM5uQKFYitvDfSfciF_BeNuVGHVXCBzJgxYVCQwfNU-8U1X4Uva3vcoRiqUO1L9bRaEbwT_uV97cwClrtyf9AQJhkn6n7OpbA7UKlLTvA_wCgAk0bxgdjlXyj4rPUkeu3hhFaYJXnNe91rRfjEKmynRTp3O5"/>
+</div>
+</div>
+</div>
+<div class="pt-lg border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="text-on-surface-variant font-label-sm text-label-sm">
+                    © 2024 نظام إدارة المسابقات - جميع الحقوق محفوظة لوزارة التعليم.
+                </div>
+<div class="flex gap-lg text-on-surface-variant font-label-sm text-label-sm">
+<a class="hover:underline" href="#">سياسة الخصوصية</a>
+<a class="hover:underline" href="#">شروط الاستخدام</a>
+<a class="hover:underline" href="#">إمكانية الوصول</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Simple Interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    header.classList.add('shadow-md');
+                    header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                } else {
+                    header.classList.remove('shadow-md');
+                    header.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+                }
+            });
+        });
+    </script>
+<script src="../assets/flow-nav.js"></script>
+</body></html>

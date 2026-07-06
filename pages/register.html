@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>تسجيل المتسابقين | نظام إدارة المسابقات</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-transition {
+            transition: all 0.3s ease-in-out;
+        }
+        .hide-step {
+            display: none;
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        .show-step {
+            display: block;
+            opacity: 1;
+            transform: translateX(0);
+        }
+        /* Zebra for tables if needed later */
+        .zebra-row:nth-child(even) { background-color: #f8fafc; }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#bcc7de",
+                    "surface": "#f7f9fb",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#005137",
+                    "surface-container-highest": "#e0e3e5",
+                    "primary-container": "#131b2e",
+                    "on-tertiary-container": "#069669",
+                    "surface-tint": "#565e74",
+                    "outline": "#76777d",
+                    "surface-dim": "#d8dadc",
+                    "secondary-fixed": "#d8e3fb",
+                    "tertiary-fixed": "#85f8c4",
+                    "tertiary-fixed-dim": "#68dba9",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#002114",
+                    "background": "#f7f9fb",
+                    "on-surface": "#191c1e",
+                    "outline-variant": "#c6c6cd",
+                    "surface-variant": "#e0e3e5",
+                    "on-surface-variant": "#45464d",
+                    "primary": "#000000",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#586377",
+                    "primary-fixed-dim": "#bec6e0",
+                    "surface-bright": "#f7f9fb",
+                    "surface-container-high": "#e6e8ea",
+                    "inverse-surface": "#2d3133",
+                    "on-primary-container": "#7c839b",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary": "#000000",
+                    "tertiary-container": "#002114",
+                    "on-background": "#191c1e",
+                    "secondary": "#545f73",
+                    "surface-container-low": "#f2f4f6",
+                    "on-primary-fixed": "#131b2e",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#dae2fd",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#d5e0f8",
+                    "inverse-primary": "#bec6e0",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#111c2d",
+                    "on-secondary-fixed-variant": "#3c475a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#eceef0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "container-max": "1440px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "base": "8px",
+                    "sidebar-collapsed": "80px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "sidebar-width": "280px",
+                    "2xl": "48px"
+            },
+            "fontFamily": {
+                    "headline-md": ["IBM Plex Sans Arabic"],
+                    "headline-lg": ["IBM Plex Sans Arabic"],
+                    "label-sm": ["IBM Plex Sans Arabic"],
+                    "display-lg": ["IBM Plex Sans Arabic"],
+                    "body-md": ["Inter", "IBM Plex Sans Arabic"],
+                    "title-lg": ["IBM Plex Sans Arabic"],
+                    "headline-lg-mobile": ["IBM Plex Sans Arabic"],
+                    "body-lg": ["Inter", "IBM Plex Sans Arabic"],
+                    "label-md": ["IBM Plex Sans Arabic"]
+            },
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 left-0 w-full z-50 flex flex-row-reverse justify-between items-center px-lg h-16 bg-surface-container-lowest border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<div class="font-headline-md text-headline-md font-bold text-primary">نظام إدارة المسابقات</div>
+</div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant font-body-md hover:bg-surface-container-low px-md py-xs rounded transition-colors" href="#">الرئيسية</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-body-md" href="#">المسابقات</a>
+<a class="text-on-surface-variant font-body-md hover:bg-surface-container-low px-md py-xs rounded transition-colors" href="#">النتائج</a>
+<a class="text-on-surface-variant font-body-md hover:bg-surface-container-low px-md py-xs rounded transition-colors" href="#">عن المنصة</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors" data-icon="language">language</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors" data-icon="notifications">notifications</button>
+<div class="flex gap-sm">
+<button class="bg-primary text-on-primary px-lg py-sm rounded-lg font-label-md transition-all active:scale-95">تسجيل الدخول</button>
+<button class="border border-outline text-on-surface-variant px-lg py-sm rounded-lg font-label-md hover:bg-surface-container-low transition-all">إنشاء حساب</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-2xl px-md md:px-xl max-w-container-max mx-auto">
+<!-- Header Section -->
+<div class="mb-xl text-center">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-sm">طلب تسجيل متسابق جديد</h1>
+<p class="text-on-surface-variant max-w-2xl mx-auto">يرجى استكمال كافة البيانات والمستندات المطلوبة بدقة لضمان مراجعة طلبك في أسرع وقت.</p>
+</div>
+<!-- Progress Stepper -->
+<div class="relative mb-2xl max-w-4xl mx-auto">
+<div class="flex justify-between items-center w-full">
+<!-- Step 1 -->
+<div class="flex flex-col items-center z-10 step-item active" id="step-indicator-1">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold mb-xs border-4 border-surface shadow-sm">1</div>
+<span class="text-label-sm font-label-sm text-primary">المعلومات الشخصية</span>
+</div>
+<!-- Connector -->
+<div class="flex-1 h-1 bg-surface-container-highest mx-xs mb-6 -translate-y-1 transition-all duration-500" id="line-1"></div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center z-10 step-item" id="step-indicator-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold mb-xs border-4 border-surface" id="circle-2">2</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant" id="text-2">المؤهلات العلمية</span>
+</div>
+<!-- Connector -->
+<div class="flex-1 h-1 bg-surface-container-highest mx-xs mb-6 -translate-y-1 transition-all duration-500" id="line-2"></div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center z-10 step-item" id="step-indicator-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold mb-xs border-4 border-surface" id="circle-3">3</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant" id="text-3">رفع المستندات</span>
+</div>
+<!-- Connector -->
+<div class="flex-1 h-1 bg-surface-container-highest mx-xs mb-6 -translate-y-1 transition-all duration-500" id="line-3"></div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center z-10 step-item" id="step-indicator-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold mb-xs border-4 border-surface" id="circle-4">4</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant" id="text-4">المراجعة والارسال</span>
+</div>
+</div>
+</div>
+<!-- Form Container -->
+<div class="max-w-4xl mx-auto bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm p-lg md:p-2xl min-h-[500px] flex flex-col justify-between">
+<form class="flex-grow" id="registrationForm">
+<!-- Step 1: Personal Info -->
+<div class="step-transition show-step" id="step-content-1">
+<h3 class="font-headline-md text-headline-md mb-lg border-b border-outline-variant pb-base">المعلومات الشخصية</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface">الاسم الكامل (كما في الهوية)</label>
+<input class="rounded-lg border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary h-12" placeholder="أدخل اسمك الكامل" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface">رقم الهوية الوطنية / جواز السفر</label>
+<input class="rounded-lg border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary h-12" placeholder="أدخل الرقم التعريفي" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface">البريد الإلكتروني</label>
+<input class="rounded-lg border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary h-12 text-left" dir="ltr" placeholder="example@domain.com" type="email"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface">رقم الجوال</label>
+<input class="rounded-lg border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary h-12 text-left" dir="ltr" placeholder="+966 5X XXX XXXX" type="tel"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface">تاريخ الميلاد</label>
+<input class="rounded-lg border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary h-12" type="date"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface">الجنس</label>
+<select class="rounded-lg border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary h-12">
+<option disabled="" selected="">اختر الجنس</option>
+<option>ذكر</option>
+<option>أنثى</option>
+</select>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface">المحافظة / المنطقة</label>
+<input class="rounded-lg border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary h-12" placeholder="أدخل المنطقة" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface">العنوان بالتفصيل</label>
+<input class="rounded-lg border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary h-12" placeholder="الشارع، الحي، المبنى" type="text"/>
+</div>
+</div>
+</div>
+<!-- Step 2: Educational Qualifications -->
+<div class="step-transition hide-step" id="step-content-2">
+<h3 class="font-headline-md text-headline-md mb-lg border-b border-outline-variant pb-base">المؤهلات العلمية</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="flex flex-col gap-xs col-span-1 md:col-span-2">
+<label class="font-label-md text-label-md text-on-surface">المستوى التعليمي</label>
+<select class="rounded-lg border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary h-12">
+<option disabled="" selected="">اختر المستوى</option>
+<option>طالب جامعي</option>
+<option>بكالوريوس</option>
+<option>ماجستير</option>
+<option>دكتوراه</option>
+</select>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface">الجامعة / المؤسسة التعليمية</label>
+<input class="rounded-lg border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary h-12" placeholder="أدخل اسم الجامعة" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface">سنة التخرج (أو المتوقعة)</label>
+<input class="rounded-lg border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary h-12" max="2030" min="1990" placeholder="YYYY" type="number"/>
+</div>
+<div class="flex flex-col gap-xs col-span-1 md:col-span-2">
+<label class="font-label-md text-label-md text-on-surface">التخصص الدقيق</label>
+<input class="rounded-lg border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary h-12" placeholder="مثال: هندسة برمجيات" type="text"/>
+</div>
+</div>
+</div>
+<!-- Step 3: Document Uploads -->
+<div class="step-transition hide-step" id="step-content-3">
+<h3 class="font-headline-md text-headline-md mb-lg border-b border-outline-variant pb-base">رفع المستندات</h3>
+<p class="text-on-surface-variant mb-md text-label-sm">يرجى رفع صور واضحة بصيغة PDF أو JPG (الحد الأقصى 5 ميجابايت للملف الواحد)</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Upload Card 1 -->
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-lg flex flex-col items-center text-center hover:border-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant mb-xs" data-icon="account_box">account_box</span>
+<span class="font-label-md text-on-surface">الصورة الشخصية</span>
+<span class="text-xs text-on-surface-variant mt-xs">خلفية بيضاء، مقاس 4*6</span>
+<input class="hidden" type="file"/>
+</div>
+<!-- Upload Card 2 -->
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-lg flex flex-col items-center text-center hover:border-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant mb-xs" data-icon="badge">badge</span>
+<span class="font-label-md text-on-surface">نسخة الهوية الوطنية</span>
+<span class="text-xs text-on-surface-variant mt-xs">صورة واضحة للوجهين</span>
+<input class="hidden" type="file"/>
+</div>
+<!-- Upload Card 3 -->
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-lg flex flex-col items-center text-center hover:border-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant mb-xs" data-icon="school">school</span>
+<span class="font-label-md text-on-surface">شهادة المؤهل العلمي</span>
+<span class="text-xs text-on-surface-variant mt-xs">وثيقة التخرج أو السجل الأكاديمي</span>
+<input class="hidden" type="file"/>
+</div>
+<!-- Upload Card 4 (Optional) -->
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-lg flex flex-col items-center text-center hover:border-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant mb-xs" data-icon="description">description</span>
+<span class="font-label-md text-on-surface">السيرة الذاتية (اختياري)</span>
+<span class="text-xs text-on-surface-variant mt-xs">بصيغة PDF فقط</span>
+<input class="hidden" type="file"/>
+</div>
+</div>
+</div>
+<!-- Step 4: Review & Send -->
+<div class="step-transition hide-step" id="step-content-4">
+<h3 class="font-headline-md text-headline-md mb-lg border-b border-outline-variant pb-base">المراجعة والارسال</h3>
+<div class="bg-surface rounded-lg p-lg border border-outline-variant">
+<div class="flex items-start gap-md mb-lg">
+<div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="fact_check">fact_check</span>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-on-surface">تأكيد البيانات</h4>
+<p class="text-on-surface-variant text-body-md">يرجى مراجعة كافة الخطوات السابقة والتأكد من صحة المعلومات المرفقة. لا يمكن تعديل الطلب بعد الإرسال إلا من خلال الدعم الفني.</p>
+</div>
+</div>
+<div class="space-y-md">
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-on-tertiary-container text-xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-body-md text-on-surface">تم استكمال البيانات الشخصية بنجاح</span>
+</div>
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-on-tertiary-container text-xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-body-md text-on-surface">تم استكمال بيانات المؤهلات العلمية</span>
+</div>
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-on-tertiary-container text-xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-body-md text-on-surface">تم رفع 3 من 4 مستندات (مستند واحد اختياري)</span>
+</div>
+</div>
+<div class="mt-xl p-md bg-white border border-outline-variant rounded-lg">
+<label class="flex gap-md items-start cursor-pointer group">
+<input class="mt-1 w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary transition-all" type="checkbox"/>
+<span class="text-label-md text-on-surface-variant group-hover:text-on-surface transition-colors">
+                                    أقر بأن جميع البيانات المدخلة صحيحة وعلى مسؤوليتي الشخصية، كما أوافق على شروط وأحكام المسابقة المنصوص عليها في وثيقة السياسات.
+                                </span>
+</label>
+</div>
+</div>
+</div>
+</form>
+<!-- Navigation Buttons -->
+<div class="flex justify-between items-center mt-2xl pt-lg border-t border-outline-variant">
+<button class="invisible flex items-center gap-sm px-lg py-sm border border-outline rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all active:scale-95" id="prevBtn" onclick="changeStep(-1)">
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+                    السابق
+                </button>
+<div class="flex gap-md">
+<button class="flex items-center gap-sm px-2xl py-sm bg-primary text-on-primary rounded-lg shadow-sm hover:opacity-90 transition-all active:scale-95" id="nextBtn" onclick="changeStep(1)">
+                        التالي
+                        <span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<button class="hidden flex items-center gap-sm px-2xl py-sm bg-on-tertiary-container text-on-tertiary rounded-lg shadow-md hover:opacity-90 transition-all active:scale-95" id="submitBtn" onclick="simulateSubmit()">
+                        إرسال التسجيل
+                        <span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Success Dialog (Modal) -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/40 backdrop-blur-sm p-md" id="successModal">
+<div class="bg-surface-container-lowest max-w-md w-full rounded-2xl shadow-2xl p-2xl text-center transform scale-90 opacity-0 transition-all duration-300" id="modalContent">
+<div class="w-20 h-20 bg-on-tertiary-container/10 text-on-tertiary-container rounded-full flex items-center justify-center mx-auto mb-lg">
+<span class="material-symbols-outlined text-5xl" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-md">تم تقديم طلبك بنجاح</h2>
+<p class="text-on-surface-variant text-body-lg mb-xl">طلبك الآن قيد مراجعة الأهلية. ستتلقى إشعاراً عبر البريد الإلكتروني فور تحديث حالة طلبك.</p>
+<button class="w-full py-md bg-primary text-on-primary rounded-xl font-label-md shadow-lg transition-all active:scale-95" onclick="window.location.href='dashboard.html'">الانتقال إلى لوحة المتسابق</button>
+</div>
+</div>
+<!-- Loading Overlay -->
+<div class="fixed inset-0 z-[110] hidden items-center justify-center bg-surface-container-lowest/80" id="loadingOverlay">
+<div class="flex flex-col items-center">
+<div class="w-12 h-12 border-4 border-outline-variant border-t-primary rounded-full animate-spin"></div>
+<p class="mt-md font-label-md text-on-surface">جاري معالجة الطلب...</p>
+</div>
+</div>
+<script>
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        function changeStep(delta) {
+            const nextStep = currentStep + delta;
+            
+            if (nextStep < 1 || nextStep > totalSteps) return;
+
+            // Hide current content
+            document.getElementById(`step-content-${currentStep}`).classList.replace('show-step', 'hide-step');
+            
+            // Update Indicators
+            updateIndicators(currentStep, nextStep);
+
+            // Show next content
+            currentStep = nextStep;
+            setTimeout(() => {
+                const el = document.getElementById(`step-content-${currentStep}`);
+                el.classList.replace('hide-step', 'show-step');
+            }, 50);
+
+            // Update buttons visibility
+            document.getElementById('prevBtn').style.visibility = (currentStep === 1) ? 'hidden' : 'visible';
+            
+            if (currentStep === totalSteps) {
+                document.getElementById('nextBtn').classList.add('hidden');
+                document.getElementById('submitBtn').classList.remove('hidden');
+            } else {
+                document.getElementById('nextBtn').classList.remove('hidden');
+                document.getElementById('submitBtn').classList.add('hidden');
+            }
+        }
+
+        function updateIndicators(oldStep, newStep) {
+            // Logic for visual progress line and circles
+            for (let i = 1; i <= totalSteps; i++) {
+                const circle = document.getElementById(`circle-${i}`);
+                const text = document.getElementById(`text-${i}`);
+                const line = document.getElementById(`line-${i-1}`); // lines are indexed 1-3
+
+                if (i <= newStep) {
+                    if (circle) {
+                        circle.classList.replace('bg-surface-container-highest', 'bg-primary');
+                        circle.classList.replace('text-on-surface-variant', 'text-on-primary');
+                    }
+                    if (text) {
+                        text.classList.replace('text-on-surface-variant', 'text-primary');
+                        text.classList.add('font-bold');
+                    }
+                    if (line) {
+                        line.classList.replace('bg-surface-container-highest', 'bg-primary');
+                    }
+                } else {
+                    if (circle) {
+                        circle.classList.replace('bg-primary', 'bg-surface-container-highest');
+                        circle.classList.replace('text-on-primary', 'text-on-surface-variant');
+                    }
+                    if (text) {
+                        text.classList.replace('text-primary', 'text-on-surface-variant');
+                        text.classList.remove('font-bold');
+                    }
+                    if (line) {
+                        line.classList.replace('bg-primary', 'bg-surface-container-highest');
+                    }
+                }
+            }
+        }
+
+        function simulateSubmit() {
+            document.getElementById('loadingOverlay').classList.replace('hidden', 'flex');
+            
+            setTimeout(() => {
+                document.getElementById('loadingOverlay').classList.replace('flex', 'hidden');
+                const modal = document.getElementById('successModal');
+                const content = document.getElementById('modalContent');
+                
+                modal.classList.replace('hidden', 'flex');
+                setTimeout(() => {
+                    content.classList.remove('scale-90', 'opacity-0');
+                    content.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            }, 2000);
+        }
+
+        // Add micro-interactions to upload cards
+        document.querySelectorAll('.border-dashed').forEach(card => {
+            card.addEventListener('click', () => {
+                card.querySelector('input').click();
+            });
+            card.querySelector('input').addEventListener('change', (e) => {
+                if(e.target.files.length > 0) {
+                    card.classList.replace('border-outline-variant', 'border-on-tertiary-container');
+                    card.querySelector('.material-symbols-outlined').style.color = '#069669';
+                    card.querySelector('.text-on-surface').innerText = 'تم رفع الملف: ' + e.target.files[0].name.substring(0, 15) + '...';
+                }
+            });
+        });
+    </script>
+<script src="../assets/flow-nav.js"></script>
+</body></html>

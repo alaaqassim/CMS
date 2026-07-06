@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>نظام إدارة المسابقات الوطنية — عرض توضيحي تفاعلي</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        primary: "#0F172A", "primary-soft": "#1E293B",
+        emerald: { 100:"#D1FAE5", 400:"#34d399", 500:"#10b981", 600:"#059669", 800:"#065F46" },
+        slate: { 50:"#F8FAFC",100:"#F1F5F9",200:"#E2E8F0",300:"#CBD5E1",400:"#94A3B8",500:"#64748B",600:"#475569",700:"#334155",800:"#1E293B",900:"#0F172A" },
+        surface: "#f7f9fb", "on-surface":"#191c1e", "on-surface-variant":"#45464d", "outline-variant":"#c6c6cd"
+      },
+      fontFamily: { sans:["IBM Plex Sans Arabic","sans-serif"], inter:["Inter","IBM Plex Sans Arabic"] },
+      maxWidth: { container: "1200px" }
+    }}
+  }
+</script>
+<style>
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;vertical-align:middle;}
+  body{font-family:'IBM Plex Sans Arabic',sans-serif;background:#f7f9fb;color:#191c1e;}
+  .hero-grid{background-image:radial-gradient(rgba(255,255,255,.10) 0.6px,transparent 0.6px);background-size:22px 22px;}
+  .card{transition:transform .3s cubic-bezier(.4,0,.2,1),box-shadow .3s,border-color .3s;}
+  .card:hover{transform:translateY(-6px);box-shadow:0 24px 40px -18px rgba(15,23,42,.35);border-color:#0F172A;}
+  .card:hover .card-shot{transform:scale(1.04);}
+  .card-shot{transition:transform .5s cubic-bezier(.4,0,.2,1);}
+  .card:hover .card-go{background:#0F172A;color:#fff;}
+  .fade-up{opacity:0;transform:translateY(16px);animation:fadeUp .6s forwards;}
+  @keyframes fadeUp{to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion:reduce){.fade-up{animation:none;opacity:1;transform:none;}}
+</style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+<!-- Top bar -->
+<header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-slate-200">
+  <div class="max-w-container mx-auto px-5 h-16 flex items-center justify-between flex-row-reverse">
+    <div class="flex items-center gap-3 flex-row-reverse">
+      <div class="w-9 h-9 rounded-lg bg-primary text-white flex items-center justify-center">
+        <span class="material-symbols-outlined text-[20px]">account_balance</span>
+      </div>
+      <div class="leading-tight text-right">
+        <p class="font-bold text-[15px] text-primary">نظام إدارة المسابقات الوطنية</p>
+        <p class="text-[11px] text-slate-500">إطار التميّز المؤسسي · Institutional Excellence</p>
+      </div>
+    </div>
+    <a href="pages/home.html" class="hidden sm:inline-flex items-center gap-1.5 bg-primary text-white text-sm font-semibold px-5 py-2 rounded-lg hover:bg-primary-soft transition-colors">
+      ابدأ الجولة <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+    </a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative bg-primary text-white overflow-hidden">
+  <div class="absolute inset-0 hero-grid opacity-70"></div>
+  <div class="absolute -top-24 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
+  <div class="absolute -bottom-32 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+  <div class="relative max-w-container mx-auto px-5 py-16 md:py-24">
+    <div class="max-w-3xl fade-up">
+      <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3.5 py-1.5 rounded-full text-[13px] font-medium mb-6">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        عرض توضيحي تفاعلي · 6 شاشات · دورة حياة كاملة
+      </span>
+      <h1 class="text-4xl md:text-6xl font-bold leading-[1.15] mb-5">
+        منصة موحّدة لإدارة<br/>
+        <span class="bg-gradient-to-l from-emerald-300 to-emerald-500 bg-clip-text text-transparent">المسابقات الوطنية</span> من التسجيل إلى النتائج
+      </h1>
+      <p class="text-lg text-slate-300 leading-relaxed max-w-2xl mb-8">
+        نموذج أوّلي احترافي متجاوب يحاكي رحلة المتسابق الكاملة — بوابة عامة، تفاصيل مسابقة، تسجيل متعدد الخطوات، لوحة تحكم، بيئة اختبار آمنة، وتقرير نتائج تفصيلي. مصمّم للبيئات الحكومية عالية الموثوقية بدعم كامل للعربية (RTL).
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="pages/home.html" class="inline-flex items-center gap-2 bg-white text-primary font-bold px-7 py-3.5 rounded-xl hover:bg-slate-100 transition-colors">
+          استعراض العرض التوضيحي <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <a href="#screens" class="inline-flex items-center gap-2 border border-white/25 text-white font-semibold px-7 py-3.5 rounded-xl hover:bg-white/10 transition-colors">
+          الشاشات الست
+        </a>
+      </div>
+    </div>
+    <!-- stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14 max-w-3xl fade-up" style="animation-delay:.1s">
+      <div><p class="text-3xl md:text-4xl font-bold">6</p><p class="text-slate-400 text-sm mt-1">شاشات مترابطة</p></div>
+      <div><p class="text-3xl md:text-4xl font-bold">100%</p><p class="text-slate-400 text-sm mt-1">دعم العربية RTL</p></div>
+      <div><p class="text-3xl md:text-4xl font-bold">4</p><p class="text-slate-400 text-sm mt-1">نقاط استجابة</p></div>
+      <div><p class="text-3xl md:text-4xl font-bold">A11y</p><p class="text-slate-400 text-sm mt-1">تباين ووضوح</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Lifecycle map -->
+<section class="max-w-container mx-auto px-5 py-14 md:py-20">
+  <div class="text-center mb-12">
+    <p class="text-emerald-600 font-semibold text-sm mb-2">دورة حياة المسابقة</p>
+    <h2 class="text-2xl md:text-3xl font-bold text-primary">رحلة متكاملة عبر ست مراحل</h2>
+    <p class="text-on-surface-variant mt-3 max-w-2xl mx-auto">كل شاشة مرتبطة بالتالية — يمكنك الانتقال بينها بأزرار الواجهة نفسها أو عبر مُوجِّه المسار العائم.</p>
+  </div>
+  <ol class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
+    <div class="hidden lg:block absolute top-7 right-[8.33%] left-[8.33%] h-0.5 bg-slate-200"></div>
+    <!-- steps generated below -->
+    <li class="relative text-center"><a href="pages/home.html" class="block group">
+      <span class="relative z-10 mx-auto w-14 h-14 rounded-full bg-white border-2 border-primary text-primary flex items-center justify-center shadow-sm group-hover:bg-primary group-hover:text-white transition-colors"><span class="material-symbols-outlined">home</span></span>
+      <p class="mt-3 font-bold text-sm text-primary">١ · البوابة</p>
+      <p class="text-xs text-slate-500 mt-0.5">الصفحة العامة</p></a></li>
+    <li class="relative text-center"><a href="pages/competition.html" class="block group">
+      <span class="relative z-10 mx-auto w-14 h-14 rounded-full bg-white border-2 border-slate-200 text-slate-600 flex items-center justify-center shadow-sm group-hover:border-primary group-hover:text-primary transition-colors"><span class="material-symbols-outlined">emoji_events</span></span>
+      <p class="mt-3 font-bold text-sm text-primary">٢ · التفاصيل</p>
+      <p class="text-xs text-slate-500 mt-0.5">وصف المسابقة</p></a></li>
+    <li class="relative text-center"><a href="pages/register.html" class="block group">
+      <span class="relative z-10 mx-auto w-14 h-14 rounded-full bg-white border-2 border-slate-200 text-slate-600 flex items-center justify-center shadow-sm group-hover:border-primary group-hover:text-primary transition-colors"><span class="material-symbols-outlined">app_registration</span></span>
+      <p class="mt-3 font-bold text-sm text-primary">٣ · التسجيل</p>
+      <p class="text-xs text-slate-500 mt-0.5">نموذج متعدد الخطوات</p></a></li>
+    <li class="relative text-center"><a href="pages/dashboard.html" class="block group">
+      <span class="relative z-10 mx-auto w-14 h-14 rounded-full bg-white border-2 border-slate-200 text-slate-600 flex items-center justify-center shadow-sm group-hover:border-primary group-hover:text-primary transition-colors"><span class="material-symbols-outlined">dashboard</span></span>
+      <p class="mt-3 font-bold text-sm text-primary">٤ · اللوحة</p>
+      <p class="text-xs text-slate-500 mt-0.5">متابعة المتسابق</p></a></li>
+    <li class="relative text-center"><a href="pages/exam.html" class="block group">
+      <span class="relative z-10 mx-auto w-14 h-14 rounded-full bg-white border-2 border-slate-200 text-slate-600 flex items-center justify-center shadow-sm group-hover:border-primary group-hover:text-primary transition-colors"><span class="material-symbols-outlined">quiz</span></span>
+      <p class="mt-3 font-bold text-sm text-primary">٥ · الاختبار</p>
+      <p class="text-xs text-slate-500 mt-0.5">بيئة آمنة</p></a></li>
+    <li class="relative text-center"><a href="pages/results.html" class="block group">
+      <span class="relative z-10 mx-auto w-14 h-14 rounded-full bg-white border-2 border-slate-200 text-slate-600 flex items-center justify-center shadow-sm group-hover:border-primary group-hover:text-primary transition-colors"><span class="material-symbols-outlined">workspace_premium</span></span>
+      <p class="mt-3 font-bold text-sm text-primary">٦ · النتائج</p>
+      <p class="text-xs text-slate-500 mt-0.5">تقرير الأداء</p></a></li>
+  </ol>
+</section>
+
+<!-- Screens gallery -->
+<section id="screens" class="bg-white border-y border-slate-200">
+  <div class="max-w-container mx-auto px-5 py-14 md:py-20">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+      <div>
+        <p class="text-emerald-600 font-semibold text-sm mb-2">معرض الشاشات</p>
+        <h2 class="text-2xl md:text-3xl font-bold text-primary">استعرض كل شاشة على حدة</h2>
+      </div>
+      <a href="pages/home.html" class="text-primary font-semibold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all">فتح العرض من البداية <span class="material-symbols-outlined text-[18px]">arrow_back</span></a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery"></div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="max-w-container mx-auto px-5 py-14 md:py-20">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="p-6 rounded-2xl border border-slate-200 bg-white">
+      <div class="w-11 h-11 rounded-xl bg-slate-100 flex items-center justify-center mb-4"><span class="material-symbols-outlined text-primary">responsive_layout</span></div>
+      <h3 class="font-bold text-primary mb-1.5">تصميم متجاوب بالكامل</h3>
+      <p class="text-on-surface-variant text-sm leading-relaxed">تخطيطات مبنية على شبكة 8px تتكيّف من الجوال إلى الشاشات العريضة، مع تنقّل سفلي على الجوال وأشرطة جانبية على سطح المكتب.</p>
+    </div>
+    <div class="p-6 rounded-2xl border border-slate-200 bg-white">
+      <div class="w-11 h-11 rounded-xl bg-slate-100 flex items-center justify-center mb-4"><span class="material-symbols-outlined text-primary">translate</span></div>
+      <h3 class="font-bold text-primary mb-1.5">عربية أصيلة (RTL)</h3>
+      <p class="text-on-surface-variant text-sm leading-relaxed">خط IBM Plex Sans Arabic مع انعكاس كامل للاتجاه، وتكامل سلس مع المحتوى اللاتيني في حقول البيانات.</p>
+    </div>
+    <div class="p-6 rounded-2xl border border-slate-200 bg-white">
+      <div class="w-11 h-11 rounded-xl bg-slate-100 flex items-center justify-center mb-4"><span class="material-symbols-outlined text-primary">verified_user</span></div>
+      <h3 class="font-bold text-primary mb-1.5">هوية مؤسسية موثوقة</h3>
+      <p class="text-on-surface-variant text-sm leading-relaxed">لوحة ألوان من الأزرق العميق والرمادي الفحمي مع لمسات زمردية للحالات الإيجابية — سلطوية وشفافة.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="max-w-container mx-auto px-5 pb-16">
+  <div class="relative overflow-hidden rounded-3xl bg-primary text-white px-8 py-14 md:px-16 text-center">
+    <div class="absolute inset-0 hero-grid opacity-50"></div>
+    <div class="relative">
+      <h2 class="text-2xl md:text-3xl font-bold mb-3">جاهز لاستعراض الرحلة الكاملة؟</h2>
+      <p class="text-slate-300 max-w-xl mx-auto mb-7">ابدأ من البوابة الرئيسية وتنقّل عبر المراحل الست باستخدام أزرار الواجهة أو مُوجِّه المسار العائم على حافة الشاشة.</p>
+      <a href="pages/home.html" class="inline-flex items-center gap-2 bg-white text-primary font-bold px-8 py-3.5 rounded-xl hover:bg-slate-100 transition-colors">
+        ابدأ الآن <span class="material-symbols-outlined">arrow_back</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-slate-200 bg-white">
+  <div class="max-w-container mx-auto px-5 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+    <p>© 2024 نظام إدارة المسابقات الوطنية — عرض توضيحي · إطار التميّز المؤسسي</p>
+    <p class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">bolt</span> نموذج أوّلي · لأغراض العرض فقط</p>
+  </div>
+</footer>
+
+<script>
+  var SCREENS = [
+    { file:"home.html", img:"assets/home.png", n:"١", title:"البوابة الرئيسية", desc:"صفحة عامة تعرض المسابقات النشطة والإحصائيات مع دعوات واضحة للتسجيل.", tags:["Landing","Hero","بطاقات"] },
+    { file:"competition.html", img:"assets/competition.png", n:"٢", title:"تفاصيل المسابقة", desc:"وصف شامل، شروط الأهلية، المستندات المطلوبة وجدول زمني تفاعلي.", tags:["تفاصيل","Timeline","FAQ"] },
+    { file:"register.html", img:"assets/register.png", n:"٣", title:"تسجيل المتسابق", desc:"نموذج متعدد الخطوات مع مؤشر تقدّم، رفع مستندات، ومراجعة قبل الإرسال.", tags:["نموذج","4 خطوات","رفع ملفات"] },
+    { file:"dashboard.html", img:"assets/dashboard.png", n:"٤", title:"لوحة المتسابق", desc:"متابعة حالة الطلب، الاختبارات القادمة، الإشعارات وحالة الأهلية.", tags:["Dashboard","حالة","جدول"] },
+    { file:"exam.html", img:"assets/exam.png", n:"٥", title:"بيئة الاختبار", desc:"واجهة اختبار آمنة بمؤقّت، خريطة أسئلة، ووضع تركيز خالٍ من التشتيت.", tags:["اختبار","مؤقّت","تركيز"] },
+    { file:"results.html", img:"assets/results.png", n:"٦", title:"النتائج والتقييم", desc:"نتيجة نهائية، تحليل الأداء حسب الفئة، الترتيب، وتقرير المهارات.", tags:["نتائج","تحليل","ترتيب"] }
+  ];
+  var g = document.getElementById("gallery");
+  g.innerHTML = SCREENS.map(function(s){
+    return '<a href="pages/'+s.file+'" class="card group block bg-white border border-slate-200 rounded-2xl overflow-hidden">'
+      + '<div class="relative h-52 overflow-hidden bg-slate-100 border-b border-slate-200">'
+      +   '<img src="'+s.img+'" alt="'+s.title+'" class="card-shot w-full h-full object-cover object-top">'
+      +   '<span class="absolute top-3 right-3 w-8 h-8 rounded-lg bg-primary text-white text-sm font-bold flex items-center justify-center shadow">'+s.n+'</span>'
+      + '</div>'
+      + '<div class="p-5">'
+      +   '<h3 class="font-bold text-primary text-lg mb-1.5">'+s.title+'</h3>'
+      +   '<p class="text-on-surface-variant text-sm leading-relaxed mb-4">'+s.desc+'</p>'
+      +   '<div class="flex flex-wrap gap-1.5 mb-4">'+s.tags.map(function(t){return '<span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2 py-1 rounded-md">'+t+'</span>';}).join('')+'</div>'
+      +   '<span class="card-go inline-flex items-center gap-1.5 text-sm font-semibold text-primary border border-slate-200 rounded-lg px-4 py-2 transition-colors">معاينة الشاشة <span class="material-symbols-outlined text-[18px]">arrow_back</span></span>'
+      + '</div>'
+      + '</a>';
+  }).join('');
+</script>
+</body>
+</html>

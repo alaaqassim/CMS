@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>تفاصيل المسابقة | نظام إدارة المسابقات</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .rtl { direction: rtl; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            right: 7px;
+            top: 24px;
+            bottom: -24px;
+            width: 2px;
+            background-color: #e0e3e5;
+        }
+        .timeline-item:last-child::before {
+            display: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#bcc7de",
+                        "surface": "#f7f9fb",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#005137",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-container": "#131b2e",
+                        "on-tertiary-container": "#069669",
+                        "surface-tint": "#565e74",
+                        "outline": "#76777d",
+                        "surface-dim": "#d8dadc",
+                        "secondary-fixed": "#d8e3fb",
+                        "tertiary-fixed": "#85f8c4",
+                        "tertiary-fixed-dim": "#68dba9",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#002114",
+                        "background": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "outline-variant": "#c6c6cd",
+                        "surface-variant": "#e0e3e5",
+                        "on-surface-variant": "#45464d",
+                        "primary": "#000000",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#586377",
+                        "primary-fixed-dim": "#bec6e0",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-high": "#e6e8ea",
+                        "inverse-surface": "#2d3133",
+                        "on-primary-container": "#7c839b",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "tertiary": "#000000",
+                        "tertiary-container": "#002114",
+                        "on-background": "#191c1e",
+                        "secondary": "#545f73",
+                        "surface-container-low": "#f2f4f6",
+                        "on-primary-fixed": "#131b2e",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#dae2fd",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#d5e0f8",
+                        "inverse-primary": "#bec6e0",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#111c2d",
+                        "on-secondary-fixed-variant": "#3c475a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eceef0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "container-max": "1440px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "base": "8px",
+                        "sidebar-collapsed": "80px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "sidebar-width": "280px",
+                        "2xl": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["IBM Plex Sans Arabic"],
+                        "headline-lg": ["IBM Plex Sans Arabic"],
+                        "label-sm": ["IBM Plex Sans Arabic"],
+                        "display-lg": ["IBM Plex Sans Arabic"],
+                        "body-md": ["Inter", "IBM Plex Sans Arabic"],
+                        "title-lg": ["IBM Plex Sans Arabic"],
+                        "headline-lg-mobile": ["IBM Plex Sans Arabic"],
+                        "body-lg": ["Inter", "IBM Plex Sans Arabic"],
+                        "label-md": ["IBM Plex Sans Arabic"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md text-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 right-0 left-0 w-full z-50 flex flex-row-reverse justify-between items-center px-lg h-16 bg-surface-container-lowest border-b border-outline-variant">
+<!-- Brand -->
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-bold text-primary">نظام إدارة المسابقات</span>
+<div class="h-8 w-[2px] bg-outline-variant mx-sm hidden md:block"></div>
+</div>
+<!-- Desktop Navigation -->
+<div class="hidden md:flex flex-row-reverse items-center gap-xl h-full">
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-md py-sm rounded-lg font-label-md text-label-md" href="#">الرئيسية</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-label-md text-label-md" href="#">المسابقات</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-md py-sm rounded-lg font-label-md text-label-md" href="#">النتائج</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-md py-sm rounded-lg font-label-md text-label-md" href="#">عن المنصة</a>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-md">
+<div class="hidden md:flex items-center gap-sm ml-lg">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-low rounded-full">language</button>
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-low rounded-full">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-low rounded-full">account_circle</button>
+</div>
+<button class="px-lg py-sm bg-primary text-on-primary font-label-md text-label-md rounded-lg active:opacity-80 transition-all">تسجيل الدخول</button>
+</div>
+</nav>
+<main class="mt-16 max-w-container-max mx-auto px-lg py-xl">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-xs mb-lg text-on-surface-variant font-label-sm text-label-sm">
+<a class="hover:text-primary" href="#">الرئيسية</a>
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+<a class="hover:text-primary" href="#">المسابقات</a>
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+<span class="text-on-surface font-semibold">تفاصيل المسابقة</span>
+</nav>
+<!-- Header Section -->
+<header class="mb-2xl flex flex-col md:flex-row md:items-end justify-between gap-lg bg-surface-container-lowest p-xl rounded-xl border border-outline-variant shadow-sm overflow-hidden relative">
+<div class="relative z-10">
+<div class="flex items-center gap-md mb-sm">
+<span class="bg-on-tertiary-container/10 text-on-tertiary-container px-md py-xs rounded-full font-label-sm text-label-sm flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+                        متاحة الآن
+                    </span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">رقم المسابقة: COMP-2024-082</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-sm leading-tight">المسابقة الوطنية للابتكار الرقمي والذكاء الاصطناعي</h1>
+<div class="flex items-center gap-xl text-on-surface-variant">
+<div class="flex items-center gap-xs font-label-md text-label-md">
+<span class="material-symbols-outlined">calendar_month</span>
+<span>ينتهي التسجيل في: 25 أكتوبر 2024</span>
+</div>
+<div class="flex items-center gap-xs font-label-md text-label-md">
+<span class="material-symbols-outlined">location_on</span>
+<span>عن بُعد (عبر المنصة)</span>
+</div>
+</div>
+</div>
+<div class="hidden lg:block absolute left-0 top-0 h-full w-1/3 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[200px] -rotate-12 transform translate-x-20">emoji_events</span>
+</div>
+</header>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl items-start">
+<!-- Right Column (Main Content) -->
+<div class="lg:col-span-8 space-y-xl">
+<!-- Description Card -->
+<section class="bg-surface-container-lowest p-xl rounded-xl border border-outline-variant">
+<h2 class="font-title-lg text-title-lg text-primary mb-md border-r-4 border-primary pr-md">وصف المسابقة</h2>
+<p class="text-on-surface-variant leading-relaxed mb-lg">
+                        تعد المسابقة الوطنية للابتكار الرقمي مبادرة حكومية تهدف إلى اكتشاف وتطوير المواهب الوطنية في مجالات البرمجة المتقدمة وحلول الذكاء الاصطناعي. تركز هذه الدورة على تطوير حلول ذكية للتحديات الحضرية والخدمات الحكومية الاستباقية، مما يسهم في تحقيق مستهدفات التحول الرقمي الشامل.
+                    </p>
+<div class="space-y-lg mt-xl">
+<div>
+<h3 class="font-label-md text-label-md font-bold text-on-surface mb-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary">target</span>
+                                أهداف المسابقة
+                            </h3>
+<ul class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<li class="flex items-start gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-on-tertiary-container text-[18px]">check_circle</span>
+                                    تعزيز ثقافة الابتكار التقني لدى الشباب.
+                                </li>
+<li class="flex items-start gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-on-tertiary-container text-[18px]">check_circle</span>
+                                    بناء قاعدة بيانات للمواهب الرقمية الوطنية.
+                                </li>
+<li class="flex items-start gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-on-tertiary-container text-[18px]">check_circle</span>
+                                    تطوير نماذج أولية لحلول برمجية قابلة للتطبيق.
+                                </li>
+<li class="flex items-start gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-on-tertiary-container text-[18px]">check_circle</span>
+                                    دعم المشاريع المتميزة وتحويلها إلى شركات ناشئة.
+                                </li>
+</ul>
+</div>
+<div class="pt-md border-t border-outline-variant">
+<h3 class="font-label-md text-label-md font-bold text-on-surface mb-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+                                شروط الأهلية والتقديم
+                            </h3>
+<ul class="space-y-sm">
+<li class="flex items-center gap-md p-md bg-surface-container rounded-lg">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary">person</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">الجنسية والسن</p>
+<p class="text-on-surface-variant text-label-sm">أن يكون المتقدم مواطناً، ولا يقل عمره عن 18 عاماً.</p>
+</div>
+</li>
+<li class="flex items-center gap-md p-md bg-surface-container rounded-lg">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary">school</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">المؤهل الأكاديمي</p>
+<p class="text-on-surface-variant text-label-sm">حاصل على درجة البكالوريوس أو طالب في التخصصات التقنية.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="pt-md border-t border-outline-variant">
+<h3 class="font-label-md text-label-md font-bold text-on-surface mb-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary">description</span>
+                                المستندات المطلوبة
+                            </h3>
+<div class="flex flex-wrap gap-sm">
+<span class="px-md py-sm bg-surface text-on-surface-variant border border-outline-variant rounded-lg text-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">badge</span> نسخة من الهوية الوطنية
+                                </span>
+<span class="px-md py-sm bg-surface text-on-surface-variant border border-outline-variant rounded-lg text-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">history_edu</span> السيرة الذاتية المحدثة
+                                </span>
+<span class="px-md py-sm bg-surface text-on-surface-variant border border-outline-variant rounded-lg text-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">work</span> ملف الأعمال (Portfolio)
+                                </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Timeline Section -->
+<section class="bg-surface-container-lowest p-xl rounded-xl border border-outline-variant">
+<h2 class="font-title-lg text-title-lg text-primary mb-xl border-r-4 border-primary pr-md">الجدول الزمني</h2>
+<div class="space-y-xl relative pr-4">
+<div class="timeline-item relative flex gap-lg">
+<div class="z-10 w-4 h-4 rounded-full bg-primary border-4 border-surface-container-lowest ring-1 ring-primary mt-1 shadow-sm shrink-0"></div>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface">بدء استقبال الطلبات</h4>
+<p class="text-label-sm text-on-surface-variant">01 سبتمبر 2024</p>
+<p class="mt-xs text-on-surface-variant">فتح باب التقديم لجميع الفئات عبر البوابة الإلكترونية.</p>
+</div>
+</div>
+<div class="timeline-item relative flex gap-lg">
+<div class="z-10 w-4 h-4 rounded-full bg-primary border-4 border-surface-container-lowest ring-1 ring-primary mt-1 shadow-sm shrink-0"></div>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface">إغلاق باب التسجيل</h4>
+<p class="text-label-sm text-on-surface-variant">25 أكتوبر 2024</p>
+<p class="mt-xs text-on-surface-variant">الموعد النهائي لرفع كافة المستندات المطلوبة.</p>
+</div>
+</div>
+<div class="timeline-item relative flex gap-lg">
+<div class="z-10 w-4 h-4 rounded-full bg-surface-container border-4 border-surface-container-lowest ring-1 ring-outline-variant mt-1 shadow-sm shrink-0"></div>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface-variant">مرحلة الاختبارات التقييمية</h4>
+<p class="text-label-sm text-on-surface-variant opacity-60">05 نوفمبر 2024</p>
+<p class="mt-xs text-on-surface-variant opacity-60">اختبارات تقنية مكثفة لتصفية المتقدمين.</p>
+</div>
+</div>
+<div class="timeline-item relative flex gap-lg">
+<div class="z-10 w-4 h-4 rounded-full bg-surface-container border-4 border-surface-container-lowest ring-1 ring-outline-variant mt-1 shadow-sm shrink-0"></div>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface-variant">إعلان النتائج النهائية</h4>
+<p class="text-label-sm text-on-surface-variant opacity-60">20 ديسمبر 2024</p>
+<p class="mt-xs text-on-surface-variant opacity-60">حفل تكريم الفائزين وإعلان المراكز الأولى.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Left Column (Sidebar) -->
+<div class="lg:col-span-4 space-y-lg lg:sticky lg:top-24">
+<!-- Stats Card -->
+<div class="bg-primary-container text-on-primary-fixed-variant p-xl rounded-xl shadow-lg border border-primary-container overflow-hidden relative">
+<div class="relative z-10">
+<h3 class="font-title-lg text-title-lg text-white mb-lg">تفاصيل الاختبار</h3>
+<div class="space-y-md">
+<div class="flex items-center justify-between p-md bg-white/5 rounded-lg border border-white/10">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-tertiary-fixed">timer</span>
+<span class="text-white/80 font-label-md text-label-md">مدة الاختبار</span>
+</div>
+<span class="font-bold text-white">90 دقيقة</span>
+</div>
+<div class="flex items-center justify-between p-md bg-white/5 rounded-lg border border-white/10">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-tertiary-fixed">quiz</span>
+<span class="text-white/80 font-label-md text-label-md">عدد الأسئلة</span>
+</div>
+<span class="font-bold text-white">50 سؤال</span>
+</div>
+<div class="flex items-center justify-between p-md bg-white/5 rounded-lg border border-white/10">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-tertiary-fixed">military_tech</span>
+<span class="text-white/80 font-label-md text-label-md">درجة النجاح</span>
+</div>
+<span class="font-bold text-white">70%</span>
+</div>
+</div>
+<button class="w-full mt-xl bg-white text-primary font-bold py-md rounded-lg shadow-xl hover:bg-white/90 transition-all active:scale-[0.98]">
+                            سجل الآن في المسابقة
+                        </button>
+<p class="text-center text-white/40 text-xs mt-md">متبقي 14 يوم على انتهاء التسجيل</p>
+</div>
+<div class="absolute -bottom-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+<div class="absolute -top-10 -left-10 w-32 h-32 bg-primary/20 rounded-full blur-2xl"></div>
+</div>
+<!-- FAQ Section -->
+<div class="bg-surface-container-lowest p-xl rounded-xl border border-outline-variant">
+<h3 class="font-label-md text-label-md font-bold text-on-surface mb-md">الأسئلة الشائعة</h3>
+<div class="space-y-md">
+<details class="group border-b border-outline-variant pb-sm" open="">
+<summary class="flex items-center justify-between cursor-pointer list-none">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface group-hover:text-primary transition-colors">هل الاختبار حضوري؟</span>
+<span class="material-symbols-outlined text-[20px] transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<p class="mt-sm text-label-sm text-on-surface-variant leading-relaxed">لا، جميع مراحل الاختبار والتقييم تتم عن بُعد عبر منصتنا الآمنة للذكاء الاصطناعي.</p>
+</details>
+<details class="group border-b border-outline-variant pb-sm">
+<summary class="flex items-center justify-between cursor-pointer list-none">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface group-hover:text-primary transition-colors">ما هي لغات البرمجة المعتمدة؟</span>
+<span class="material-symbols-outlined text-[20px] transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<p class="mt-sm text-label-sm text-on-surface-variant leading-relaxed">نقبل الحلول المبنية بـ Python, JavaScript, و C++ بشكل أساسي.</p>
+</details>
+<details class="group">
+<summary class="flex items-center justify-between cursor-pointer list-none">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface group-hover:text-primary transition-colors">هل توجد رسوم للتسجيل؟</span>
+<span class="material-symbols-outlined text-[20px] transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<p class="mt-sm text-label-sm text-on-surface-variant leading-relaxed">التسجيل مجاني تماماً لجميع المواطنين المستوفين للشروط.</p>
+</details>
+</div>
+</div>
+<!-- Help Banner -->
+<div class="bg-secondary-container/30 p-lg rounded-xl border border-secondary-container flex gap-md items-start">
+<span class="material-symbols-outlined text-on-secondary-container">contact_support</span>
+<div>
+<p class="font-label-sm text-label-sm font-bold text-on-secondary-container">تحتاج مساعدة؟</p>
+<p class="text-label-sm text-on-secondary-container/80 mt-xs leading-tight">تواصل مع فريق الدعم الفني عبر المحادثة المباشرة</p>
+<a class="inline-block mt-sm text-primary font-bold text-label-sm border-b border-primary pb-px hover:opacity-70" href="#">تحدث معنا</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Similar Competitions / Suggestion -->
+<section class="mt-2xl">
+<h2 class="font-title-lg text-title-lg text-primary mb-lg border-r-4 border-primary pr-md">مسابقات قد تهمك</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant hover:border-primary transition-all group">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center mb-md group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary">security</span>
+</div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface mb-xs">ماراثون الأمن السيبراني</h4>
+<p class="text-label-sm text-on-surface-variant mb-md">تحدي الحماية والأنظمة الموزعة.</p>
+<div class="flex items-center justify-between">
+<span class="text-label-sm text-error font-semibold">باقي يومين</span>
+<a class="text-primary font-bold text-label-sm flex items-center" href="#">عرض <span class="material-symbols-outlined text-[16px]">chevron_left</span></a>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant hover:border-primary transition-all group">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center mb-md group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary">cloud</span>
+</div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface mb-xs">تحدي الحوسبة السحابية</h4>
+<p class="text-label-sm text-on-surface-variant mb-md">بناء بنية تحتية مرنة وعالية الأداء.</p>
+<div class="flex items-center justify-between">
+<span class="text-label-sm text-on-surface-variant">تبدأ قريباً</span>
+<a class="text-primary font-bold text-label-sm flex items-center" href="#">عرض <span class="material-symbols-outlined text-[16px]">chevron_left</span></a>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant hover:border-primary transition-all group">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center mb-md group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary">draw</span>
+</div>
+<h4 class="font-label-md text-label-md font-bold text-on-surface mb-xs">مسابقة تصميم تجربة المستخدم</h4>
+<p class="text-label-sm text-on-surface-variant mb-md">تحسين رحلة المستخدم في التطبيقات الحكومية.</p>
+<div class="flex items-center justify-between">
+<span class="text-label-sm text-on-tertiary-container font-semibold">مفتوح حالياً</span>
+<a class="text-primary font-bold text-label-sm flex items-center" href="#">عرض <span class="material-symbols-outlined text-[16px]">chevron_left</span></a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="mt-2xl border-t border-outline-variant bg-surface-container-lowest py-xl">
+<div class="max-w-container-max mx-auto px-lg flex flex-col md:flex-row justify-between items-center gap-xl">
+<div class="text-center md:text-right">
+<p class="font-bold text-primary mb-xs">نظام إدارة المسابقات الوطني</p>
+<p class="text-label-sm text-on-surface-variant">جميع الحقوق محفوظة © 2024</p>
+</div>
+<div class="flex gap-xl text-label-sm text-on-surface-variant">
+<a class="hover:text-primary" href="#">سياسة الخصوصية</a>
+<a class="hover:text-primary" href="#">شروط الاستخدام</a>
+<a class="hover:text-primary" href="#">تواصل معنا</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions and simple effects
+        document.querySelectorAll('details').forEach((el) => {
+            el.addEventListener('toggle', () => {
+                if (el.open) {
+                    document.querySelectorAll('details').forEach((other) => {
+                        if (other !== el) other.removeAttribute('open');
+                    });
+                }
+            });
+        });
+    </script>
+<script src="../assets/flow-nav.js"></script>
+</body></html>

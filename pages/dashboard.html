@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>نظام إدارة المسابقات | لوحة التحكم</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#bcc7de",
+                    "surface": "#f7f9fb",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#005137",
+                    "surface-container-highest": "#e0e3e5",
+                    "primary-container": "#131b2e",
+                    "on-tertiary-container": "#069669",
+                    "surface-tint": "#565e74",
+                    "outline": "#76777d",
+                    "surface-dim": "#d8dadc",
+                    "secondary-fixed": "#d8e3fb",
+                    "tertiary-fixed": "#85f8c4",
+                    "tertiary-fixed-dim": "#68dba9",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#002114",
+                    "background": "#f7f9fb",
+                    "on-surface": "#191c1e",
+                    "outline-variant": "#c6c6cd",
+                    "surface-variant": "#e0e3e5",
+                    "on-surface-variant": "#45464d",
+                    "primary": "#000000",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#586377",
+                    "primary-fixed-dim": "#bec6e0",
+                    "surface-bright": "#f7f9fb",
+                    "surface-container-high": "#e6e8ea",
+                    "inverse-surface": "#2d3133",
+                    "on-primary-container": "#7c839b",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary": "#000000",
+                    "tertiary-container": "#002114",
+                    "on-background": "#191c1e",
+                    "secondary": "#545f73",
+                    "surface-container-low": "#f2f4f6",
+                    "on-primary-fixed": "#131b2e",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#dae2fd",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#d5e0f8",
+                    "inverse-primary": "#bec6e0",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#111c2d",
+                    "on-secondary-fixed-variant": "#3c475a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#eceef0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "container-max": "1440px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "base": "8px",
+                    "sidebar-collapsed": "80px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "sidebar-width": "280px",
+                    "2xl": "48px"
+            },
+            "fontFamily": {
+                    "headline-md": ["\"IBM Plex Sans Arabic, IBM Plex Sans\""],
+                    "headline-lg": ["\"IBM Plex Sans Arabic, IBM Plex Sans\""],
+                    "label-sm": ["\"IBM Plex Sans Arabic, IBM Plex Sans\""],
+                    "display-lg": ["\"IBM Plex Sans Arabic, IBM Plex Sans\""],
+                    "body-md": ["\"Inter, IBM Plex Sans Arabic\""],
+                    "title-lg": ["\"IBM Plex Sans Arabic, IBM Plex Sans\""],
+                    "headline-lg-mobile": ["\"IBM Plex Sans Arabic, IBM Plex Sans\""],
+                    "body-lg": ["\"Inter, IBM Plex Sans Arabic\""],
+                    "label-md": ["\"IBM Plex Sans Arabic, IBM Plex Sans\""]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7f9fb;
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            color: #191c1e;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid #e0e3e5;
+        }
+        .sidebar-transition {
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        /* Custom Stepper */
+        .step-active { color: #000000; border-color: #000000; }
+        .step-complete { color: #069669; border-color: #069669; }
+        .step-pending { color: #76777d; border-color: #c6c6cd; }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 right-0 left-0 w-full z-50 flex flex-row-reverse justify-between items-center px-lg h-16 bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-bold text-primary">نظام إدارة المسابقات</span>
+</div>
+<div class="hidden md:flex items-center gap-xl ml-auto mr-xl">
+<a class="text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1 font-body-md text-body-md" href="#">الرئيسية</a>
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-low transition-colors px-sm py-xs rounded font-body-md text-body-md" href="#">المسابقات</a>
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-low transition-colors px-sm py-xs rounded font-body-md text-body-md" href="#">النتائج</a>
+<a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-container-low transition-colors px-sm py-xs rounded font-body-md text-body-md" href="#">عن المنصة</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined p-sm rounded-full text-on-surface-variant hover:bg-surface-container-low transition-colors" data-icon="language">language</button>
+<button class="material-symbols-outlined p-sm rounded-full text-on-surface-variant hover:bg-surface-container-low transition-colors relative" data-icon="notifications">
+                notifications
+                <span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="flex items-center gap-sm mr-md border-r border-outline-variant pr-md">
+<div class="text-left">
+<p class="font-label-md text-label-md font-bold">محمد أحمد</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">متسابق</p>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-primary-fixed" data-alt="A professional headshot of a young Middle Eastern man in a formal white shirt, clean-shaven, smiling confidently against a minimalist light gray studio background. The lighting is soft and corporate, matching a clean modern web portal aesthetic with high clarity and professional contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIqyzxCdw6kZriAK4q-JcqDbn2WqGs2jt5a3ltayZzmzzxYbYRFxdRMgI8vpblCGYBOXzmsA3mjPsiuLnsqpUZRanziSHJ9WuG9rkbjRr1NSIaKQD6wV_0xmofUVpEfZ06r7QNiPrAKk_8GLg1XKa1MoNCx9zbBSZmDvSPeXUGmR86meKQabtX_Xcg3gWwmNZbjDinbwgE1Hihnet2yB1GFmhAdX85_Q5ffb97JoIEOZLtyNF7nMBx"/>
+</div>
+</div>
+</nav>
+<!-- Main Layout Container -->
+<div class="flex pt-16 min-h-screen">
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="hidden lg:flex fixed right-0 top-16 h-[calc(100vh-64px)] w-sidebar-width bg-surface-container-lowest border-l border-outline-variant flex-col p-md z-40 rtl">
+<div class="flex flex-col gap-xs flex-grow">
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-lg transition-all scale-95 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">لوحة التحكم</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="emoji_events">emoji_events</span>
+<span class="font-label-md text-label-md">المسابقات المتاحة</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-md text-label-md">تاريخ المشاركات</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-label-md text-label-md">الملف الشخصي</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">الإعدادات</span>
+</a>
+</div>
+<div class="pt-md border-t border-outline-variant flex flex-col gap-xs">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">المساعدة</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-error hover:bg-error-container rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">خروج</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 lg:mr-sidebar-width p-lg md:p-2xl max-w-container-max mx-auto w-full">
+<!-- Welcome Header -->
+<header class="mb-2xl">
+<h1 class="font-headline-lg text-headline-lg mb-xs">مرحباً، محمد أحمد</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">لديك اختبار قادم خلال ٤ أيام. نتمنى لك التوفيق.</p>
+</header>
+<!-- Quick Stats Row (Bento Grid Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg mb-2xl">
+<!-- Stat Card 1 -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">المسابقات المسجلة</p>
+<p class="font-headline-lg text-headline-lg">٢</p>
+</div>
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="assignment">assignment</span>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">حالة الأهلية</p>
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+<p class="font-headline-md text-headline-md text-on-tertiary-container">مؤهل</p>
+</div>
+</div>
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">الاختبارات القادمة</p>
+<p class="font-headline-md text-headline-md">١ <span class="text-label-sm font-label-sm text-on-surface-variant mr-xs">(١ يوليو)</span></p>
+</div>
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed" data-icon="event">event</span>
+</div>
+</div>
+</div>
+<!-- Main Content Sections Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- My Current Applications (Progress Tracker) -->
+<section class="lg:col-span-8 flex flex-col gap-lg">
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant">
+<div class="flex justify-between items-center mb-xl">
+<h2 class="font-title-lg text-title-lg">طلباتي الحالية</h2>
+<button class="text-primary font-label-md hover:underline">عرض الكل</button>
+</div>
+<!-- Application Card -->
+<div class="p-lg rounded-lg bg-surface border border-outline-variant mb-md">
+<div class="flex justify-between items-start mb-lg">
+<div>
+<h3 class="font-headline-md text-headline-md mb-xs">المسابقة الوطنية للابتكار ٢٠٢٤</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">رقم الطلب: #APP-88421</p>
+</div>
+<span class="px-md py-xs bg-tertiary-container text-on-tertiary-container rounded-full font-label-sm">قيد المراجعة</span>
+</div>
+<!-- Horizontal Stepper -->
+<div class="relative flex items-center justify-between mt-xl px-md">
+<!-- Connection Lines -->
+<div class="absolute top-1/2 left-0 w-full h-0.5 bg-outline-variant -translate-y-1/2 z-0"></div>
+<div class="absolute top-1/2 right-0 w-2/3 h-0.5 bg-on-tertiary-container -translate-y-1/2 z-0"></div>
+<!-- Step 1 -->
+<div class="relative z-10 flex flex-col items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-on-tertiary-container flex items-center justify-center text-on-tertiary">
+<span class="material-symbols-outlined text-[20px]" data-icon="check">check</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-bold">تقديم الطلب</span>
+</div>
+<!-- Step 2 -->
+<div class="relative z-10 flex flex-col items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-on-tertiary-container flex items-center justify-center text-on-tertiary">
+<span class="material-symbols-outlined text-[20px]" data-icon="check">check</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-bold">فرز البيانات</span>
+</div>
+<!-- Step 3 -->
+<div class="relative z-10 flex flex-col items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest border-2 border-primary flex items-center justify-center text-primary">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">التقييم الأولي</span>
+</div>
+<!-- Step 4 -->
+<div class="relative z-10 flex flex-col items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest border-2 border-outline-variant flex items-center justify-center text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">المرحلة النهائية</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Exam Schedule -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant">
+<h2 class="font-title-lg text-title-lg mb-xl">جدول الاختبارات</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-right border-collapse">
+<thead>
+<tr class="bg-surface border-b border-outline-variant">
+<th class="p-md font-label-sm text-label-sm text-on-surface-variant">اسم الاختبار</th>
+<th class="p-md font-label-sm text-label-sm text-on-surface-variant">التاريخ والوقت</th>
+<th class="p-md font-label-sm text-label-sm text-on-surface-variant">المدة</th>
+<th class="p-md font-label-sm text-label-sm text-on-surface-variant text-center">الإجراء</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md">
+<p class="font-body-md text-body-md font-bold">اختبار التفكير النقدي - المرحلة ١</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">مسابقة الابتكار</p>
+</td>
+<td class="p-md font-body-md text-body-md">١ يوليو ٢٠٢٤، ٠٩:٠٠ ص</td>
+<td class="p-md font-body-md text-body-md">٦٠ دقيقة</td>
+<td class="p-md text-center">
+<button class="px-lg py-sm bg-outline-variant text-on-surface-variant rounded-full font-label-md opacity-50 cursor-not-allowed flex items-center gap-sm mx-auto" disabled="">
+<span class="material-symbols-outlined" data-icon="play_arrow">play_arrow</span>
+                                                بدء الاختبار
+                                            </button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md">
+<p class="font-body-md text-body-md font-bold">المقابلة الفنية</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">جائزة التميز الأكاديمي</p>
+</td>
+<td class="p-md font-body-md text-body-md">١٥ يوليو ٢٠٢٤، ١١:٠٠ ص</td>
+<td class="p-md font-body-md text-body-md">٣٠ دقيقة</td>
+<td class="p-md text-center">
+<span class="text-on-surface-variant font-label-sm">لم يحن الموعد</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Sidebar Content: Notifications & Resources -->
+<section class="lg:col-span-4 flex flex-col gap-lg">
+<!-- Recent Notifications -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex flex-col h-full">
+<div class="flex justify-between items-center mb-xl">
+<h2 class="font-title-lg text-title-lg">الإشعارات الأخيرة</h2>
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</button>
+</div>
+<div class="flex flex-col gap-md flex-grow">
+<!-- Notification Item 1 -->
+<div class="flex gap-md p-md rounded-lg border-r-4 border-on-tertiary-container bg-tertiary-container/10">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="check_circle">check_circle</span>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">تم قبول طلبك</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">تم قبول طلبك لمسابقة الابتكار بنجاح.</p>
+<p class="font-label-sm text-label-sm text-outline mt-xs">منذ ٢ ساعة</p>
+</div>
+</div>
+<!-- Notification Item 2 -->
+<div class="flex gap-md p-md rounded-lg border-r-4 border-primary bg-surface">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">تذكير بموعد الاختبار</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">بقي ٤ أيام على اختبار التفكير النقدي.</p>
+<p class="font-label-sm text-label-sm text-outline mt-xs">منذ ٥ ساعات</p>
+</div>
+</div>
+<!-- Notification Item 3 -->
+<div class="flex gap-md p-md rounded-lg border-r-4 border-outline-variant bg-surface">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="update">update</span>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">تحديث في جدول المواعيد</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">تم تحديث موعد المقابلة الفنية.</p>
+<p class="font-label-sm text-label-sm text-outline mt-xs">يوم أمس</p>
+</div>
+</div>
+</div>
+<button class="mt-xl w-full py-sm text-primary font-label-md border border-primary rounded-lg hover:bg-primary-fixed transition-colors">
+                            مشاهدة جميع التنبيهات
+                        </button>
+</div>
+<!-- Helpful Links Card -->
+<div class="bg-primary-container p-lg rounded-xl text-on-primary">
+<div class="flex items-center gap-md mb-md">
+<span class="material-symbols-outlined text-tertiary-fixed" data-icon="lightbulb" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<h3 class="font-title-lg text-title-lg">دليل المتسابق</h3>
+</div>
+<p class="font-body-md text-body-md text-on-primary-container mb-lg">اطلع على التعليمات والنماذج الاسترشادية لتحقيق أفضل النتائج في المسابقة.</p>
+<a class="inline-flex items-center gap-xs font-label-md text-tertiary-fixed hover:underline" href="#">
+                            تحميل الدليل (PDF)
+                            <span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+</a>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- Mobile Navigation Bar -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center z-50">
+<a class="flex flex-col items-center text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px]">الرئيسية</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="emoji_events">emoji_events</span>
+<span class="text-[10px]">المسابقات</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="text-[10px]">الإشعارات</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="text-[10px]">حسابي</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for Stat Cards hover
+        document.querySelectorAll('.bg-surface-container-lowest.rounded-xl').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.borderColor = '#000000';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.borderColor = '#e0e3e5';
+            });
+        });
+
+        // Simulating some interactivity
+        console.log("Dashboard initialized for user: Mohammad Ahmed");
+    </script>
+<script src="../assets/flow-nav.js"></script>
+</body></html>
